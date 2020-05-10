@@ -1,0 +1,13 @@
+from django.urls import path
+from .views import list_todo_items, insert_todo_item, delete_todo_item
+
+urlpatterns = [
+    path('', list_todo_items),
+    path('list/', list_todo_items),
+    path('insert_todo/', insert_todo_item, name='todo_item_insert'),
+    path('delete_todo/<int:todo_id>/', delete_todo_item, name='todo_item_delete')
+]
+
+
+
+
