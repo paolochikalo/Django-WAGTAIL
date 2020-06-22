@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load wagtailimages_tags %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>Posts by category: {{ category }}</h1>
+        <h3><a href="{{ self.get_parent.url }}blog/" style="color: white;"> Всі Статті </a></h3>
+        {% for post in posts %}
+            <div class="row mt-5 mb-5">
+                <div class="col-sm-4">
+                    {% image post.blog_image fill-350x250 as blog_img %}
+                    <a href="{{ post.url }}">
+                        <img src="{{ blog_img.url }}" alt="{{ blog_img.alt }}">
+                    </a>
+                </div>
+                <div class="col-sm-8">
+                    <a href="{{ post.url }}">
+                        <h2>{{ post.title }}</h2>
+                        <p>{{ post.custom_title }}</p>
+                        {# @todo add a summary field to BlogDetailPage; make it a RichTextField with only Bold and Italic enabled. #}
+                        <a href="{{ post.url }}" class="btn btn-primary mt-4">Читати новину</a>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

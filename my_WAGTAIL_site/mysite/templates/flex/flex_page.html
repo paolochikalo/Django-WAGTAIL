@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+    <!-- In a regular page template (like home_page.html) you can use self. and page. the same way, they are exactly the same. 
+        In your StreamField templates there is no "page" per se, it's more like an included file. 
+        Because we're using OOP Python (classes) the {{ self.something }} always refers to its main class. 
+        So {{ self.title }} in a StreamField template would be asking for the title field from the StreamField class; 
+        whereas in home_page.html {{ self.title }} is the same as {{ page.title }}, and that's coming from `class HomePage(Page)`. 
+        If it makes it easier, you can use {{ page.something }} for all your page related fields, and use {{ self.something }} 
+        for all your StreamFields, that tends to make it easier to work with. -->
+
+    <h1> {{ self.subtitle}} </h1>
+    {% for block in page.content %}
+        {% include_block block %}
+    {% endfor %}
+{% endblock  %}
+

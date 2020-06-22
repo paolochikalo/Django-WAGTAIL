@@ -1,0 +1,12 @@
+.carousel {
+    position: relative;
+    background: center center no-repeat;
+    width: 100%;
+    background-size: cover;
+    overflow: hidden;
+    height: 400px;
+}
+
+.rich-text p a{
+    
+}
